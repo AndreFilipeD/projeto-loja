@@ -1,0 +1,349 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 600px){
+    header{
+        display: flex;
+        justify-content: center;
+        height: 50px;
+        background-color: var(--mainbackcolor);
+        width: 100%;
+    }
+    #rightHeader{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        align-items: center;
+        padding-right: 20px;
+    }
+    #rightHeader img{
+        height: 100%;
+        width: height;
+        filter: invert();
+        padding: 10px;
+        transition: 1s;
+    }
+    #rightHeader img:hover{
+        background-color: #FFCAB8;
+        padding: 4px;
+        filter: none;
+        transition: .4s;
+        cursor: pointer;
+    }
+    #leftHeader{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        padding-left: 20px;
+    }
+    #leftHeader img{ 
+        height: 100%;
+        width: height;
+        filter: invert();
+        padding: 10px;
+        transition: 1s;
+    }
+    #leftHeader img:hover{
+        background-color: #FFCAB8;
+        padding: 4px;
+        filter: none;
+        transition: .4s;
+        cursor: pointer;
+    }
+    #logo{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 400px;
+        cursor: pointer;
+        transition: 1s;
+    }
+    #logo:hover #logoImage{
+        width: 47px;
+        height: 47px;
+        transition: 1s;
+    }
+    #logoImage{
+        width: 45px;
+        height: 45px;
+        margin-left: -40px;
+        margin-top: -5px;
+        transition: 1s;
+        border-radius: 50px;
+    }
+    #mainTitle{
+        font-family: var(--titlefont);
+        font-size: 1.5em;
+        font-weight: 100;
+        margin-top: 48px;
+        margin-bottom: 50px;
+        margin-left: -10px;
+        background-color: #FFCAB8;
+        border: 4px double #883636;
+        border-radius: 0px 15px 0px 15px;
+        color: #883636;
+    
+        padding-left: 5px;
+        padding-right: 5px;
+
+        transition: 1s;
+    }
+    #secTitle{
+        font-family: var(--sectitlefont);
+        font-size: .75em;
+        font-weight: 500;
+        margin-top: 20px;
+        margin-left: -65px;
+        text-shadow: 0px 1px 1px #883636;
+    }
+    .shopItens{
+        margin: calc(-3vw + 5px) auto 0 auto;
+    }
+    footer{
+        display: flex;
+        flex-direction: column;
+    }
+    #msgIntro{
+        padding-top: 18px;
+        font-size: .7em;
+    }
+    #showProduct{
+        margin: 15px auto 60px auto;
+        max-width: 1200px;
+        padding: 0px 15px;
+        display: none;
+        gap: 10px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: "mimg" "simg" "cart" "cbtn" "share" "def";
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 992px){ /* 768px*/
+    header{
+        display: flex;
+        justify-content: center;
+        height: 50px;
+        background-color: var(--mainbackcolor);
+        width: 100%;
+    }
+    #rightHeader{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        align-items: center;
+        padding-right: 20px;
+    }
+    #rightHeader img{
+        height: 100%;
+        width: height;
+        filter: invert();
+        padding: 10px;
+        transition: 1s;
+    }
+    #rightHeader img:hover{
+        background-color: #FFCAB8;
+        padding: 4px;
+        filter: none;
+        transition: .4s;
+        cursor: pointer;
+    }
+    #leftHeader{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        padding-left: 20px;
+    }
+    #leftHeader img{ 
+        height: 100%;
+        width: height;
+        filter: invert();
+        padding: 10px;
+        transition: 1s;
+    }
+    #leftHeader img:hover{
+        background-color: #FFCAB8;
+        padding: 4px;
+        filter: none;
+        transition: .4s;
+        cursor: pointer;
+    }
+    #logo{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 400px;
+        cursor: pointer;
+        transition: 1s;
+    }
+    #logo:hover #logoImage{
+        width: 47px;
+        height: 47px;
+        transition: 1s;
+    }
+    #logoImage{
+        width: 45px;
+        height: 45px;
+        margin-left: -40px;
+        margin-top: -5px;
+        transition: 1s;
+        border-radius: 50px;
+    }
+    #mainTitle{
+        font-family: var(--titlefont);
+        font-size: 1.5em;
+        font-weight: 100;
+        margin-top: 48px;
+        margin-bottom: 50px;
+        margin-left: -10px;
+        background-color: #FFCAB8;
+        /*border: 1.5px dotted black;*/
+        /*border: 3px double black;*/
+        /*border: 4px double #883636;*/
+        border: 4px double #883636;
+        /*border: 2px dotted black;*/
+        /*border: 2px dotted #883636;*/
+        /*border: 2px dotted #883636;*/
+        /*border: 4px outset #883636;*/
+        border-radius: 0px 15px 0px 15px;
+        color: #883636;
+    
+        padding-left: 5px;
+        padding-right: 5px;
+
+        transition: 1s;
+    }
+    #secTitle{
+        font-family: var(--sectitlefont);
+        font-size: .75em;
+        font-weight: 500;
+        margin-top: 20px;
+        margin-left: -65px;
+    
+        text-shadow: 0px 1px 1px #883636;
+        /*color: var(--secbackcolor);*/
+    }
+    #showProduct{
+        margin: 0px auto 40px auto;
+        max-width: 1200px;
+        padding: 25px 15px 0px 15px;
+        display: none;
+        gap: 10px;
+        grid-template-columns: 1.3fr 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: "mimg cart" "simg cbtn" "share share" "def def";
+    }
+    .pshowMainimagespace{
+        padding-right: 6vw;
+        padding-left: 6vw;
+    }
+    .pshowShare > img{
+        width: calc(25px + 1vw);
+    }
+    .pshowShare > img:hover{
+        border-radius: 9px;
+        width: calc(25px + 1vw);
+        background-color: var(--secbackcolor);
+        transition: .4s;
+        cursor: pointer;
+    }
+    #shopContainer{
+        margin-top: 1vw;
+    }
+    .shopItens{
+        margin: calc(-3vw + 0px) auto 0 auto;
+        max-width: 800px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+    /*HERE*/
+    #showProduct{
+        margin: 0px auto 40px auto;
+
+        max-width: 1200px;
+        padding: 25px 15px 0px 15px;
+        display: none;
+        gap: 10px;
+        grid-template-columns: 1.3fr 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: "mimg cart" "simg cbtn" "share share" "def def";
+    }
+    .pshowMainimagespace{
+        padding-right: 8vw;
+        padding-left: 8vw;
+    }
+    #mainSlider{
+        width: 100%;
+        height: 400px;
+        overflow-y: none;
+        overflow-x: none;
+    }
+    .shopItens{
+        margin: calc(-3vw + 40px) auto 0 auto;
+        max-width: 1200px;
+    }
+    #shopContainer{
+        margin-top: calc(-10px - .8vw);
+    }
+}
+
+@media screen and (min-width: 1200px){
+    body{
+        min-height: 100px;
+    }
+    #mainSlider{
+        height: 400px;
+        overflow-y: none;
+        overflow-x: none;
+    }
+    #showProduct{
+        /* LAYOUT PADRÃO UTILIZADO NA PRIMEIRA VERSÃO MOBILE FIRST */
+        /*margin: 20px auto 80px auto;*/
+        margin: 0px auto 40px auto;
+
+        max-width: 1200px;
+        padding: 25px 15px 0px 15px;
+        display: none;
+        gap: 10px;
+        grid-template-columns: 1.3fr 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: "mimg cart" "simg cbtn" "share share" "def def";
+    }
+    .shopItens{
+        margin: calc(-25px) auto 0 auto;
+        max-width: 1450px;
+    }
+    #shopContainer{
+        /*margin-top: -30vw;*/ /*OLDER FIX*/
+    }
+    .shopProduct{
+        margin-top: 49.6px;
+        margin-right: 24.8px;
+        margin-left: 24.8px;
+        width: 200px;
+        height: 280px;
+        border: 1px solid rgb(207, 207, 207);
+    }
+    .pshowShare{
+        text-align: center;
+    }
+    .pshowMainimagespace{
+        padding-right: 100px;
+        padding-left: 100px;
+    }
+    #msgIntro{
+        margin: auto;
+        max-width: 1200px;
+        
+    }
+}

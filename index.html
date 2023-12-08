@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="htmlSet">
+<head>
+	<!-- HTML HEAD START -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Império Francisca</title>
+	<link rel="shortcut icon" href="images/favicon_crown.svg" type="image/x-icon">
+	<link rel="stylesheet" href="estilos/style.css">
+	<link rel="stylesheet" href="estilos/media-query.css">
+</head>
+<body>
+	<!-- HTML BODY START -->
+	<header>
+		<div id="leftHeader" class="nselm"><!-- CABEÇALHO DA ESQUERDA -->
+			<img src="images/icons/menu.png" alt="Menu" onclick="clickthrow(1)">
+		</div>
+		<div id="logo" class="nselm" onclick="clickthrow(0), showProduct(-1)"><!-- LOGO CENTRAL RENDERIZADO EM CSS -->
+			<img id="logoImage" src="images/headerlogo/imperiologo.svg" alt="logo imperio francisca">
+			<h1 id="mainTitle">IMPÉRIO</h1>
+			<h1 id="secTitle">Francisca</h1>
+		</div>
+		<div id="rightHeader" class="nselm"><!-- CABEÇALHO DA DIREITA -->
+			<img src="images/icons/heart_plus.png" alt="Heart Plus" onclick="clickthrow(3)">
+			<img src="images/icons/shop_bag.png" alt="Shopping Bag" onclick="clickthrow(2)">
+		</div>
+	</header>
+	<main>
+		<!-- IFRAME QUE CARREGA O SLIDER -->
+		<iframe id="mainSlider" class="nselm" name="mslide" src="slides/slide.html" frameborder="0"></iframe>
+		<!-- IFRAME QUE CARREGA O SLIDER -->
+		<!-- ESPAÇO DE APRESENTAÇÃO DE PRODUTO -->
+		<aside id="showProduct"><a href="#" class="returnLink" onclick="showProduct(-1)">Voltar ao inicio</a>
+		<!-- BOX MAIN IMAGE -->
+		<div class="pshowMainimagespace">
+			<img class="pshowMainimage" alt="blusaExemplo">
+			<div class="pshowPromo"></div>
+		</div>
+		<!-- BOX SECOND IMAGE -->
+		<div class="pshowSecimages"> 
+			<img class="SecimgA" alt="blusaExemplo" onclick="changePicture(1)">
+			<img class="SecimgB" alt="blusaExemplo" onclick="changePicture(2)">
+			<img class="SecimgC" alt="blusaExemplo" onclick="changePicture(3)">
+		</div>
+		<!-- BOX CARTSHOP -->
+		<div class="pshowCartadd">
+			<h2 class="pshowName"></h2>
+			<h2 class="pshowPrice"></h2>
+		</div>
+		<!-- BOX CARTBUTTONADD -->
+		<div class="cartButton" onclick="addCart(1), clickthrow(2)">Adicionar ao carrinho
+		</div>
+		<!-- BOX SHARE CONTENT -->
+		<div class="pshowShare"> Compartilhe <br>
+		<img src="images/footerlogo/whats.png" alt="WhatsLogo">
+		<img src="images/footerlogo/insta.png" alt="InstaLogo">
+		<img src="images/footerlogo/face.png" alt="FaceLogo">
+		<img src="images/footerlogo/youtube.png" alt="YoutubeLogo">
+		<img src="images/footerlogo/tiktok.png" alt="TiktokLogo">
+		<img src="images/footerlogo/linked.png" alt="LinkedLogo">
+		</div>
+		<!-- BOX DEFINITION -->
+		<div class="pshowDefinition"><p class="pshowDef"></p></div>
+		<!-- FIM BOX DO MOSTRUÁRIO -->
+		</aside>
+		<!-- ESPAÇO DE APRESENTAÇÃO DE PRODUTO -->
+		<!-- MENSAGEM SAUDAÇÃO + PESQUISA DE FILTRO -->
+		<aside id="msgIntro" class="nselm"></aside>
+		<!-- MENSAGEM SAUDAÇÃO + PESQUISA DE FILTRO -->
+		<div id="shopContainer">
+			<div class="shopItens">
+				<!-- DIVISAO DE PRODUTO -->
+				<!-- ESPAÇO RESERVADO PARA PRODUTOS -->
+				<!-- DIVISAO DE PRODUTO -->
+			</div>
+		</div>
+	</main>
+	<footer class="nselm">
+		<!-- FOOTERBLOCK PERMANEÇA CONECTADO -->
+		<div class="footerblock">
+			<h1>Permaneça conectado</h1>
+			<ul class="permaconectado">
+				<!-- ITENS DE PERMANEÇA CONECTADO RODAPÉ -->
+				<li><a href="https://api.whatsapp.com/send/?phone=19997597681&text=🦒Olá, Império Francisca! Gostaria de entrar em contato para tirar uma dúvida. 💖" target="_blank"><img src="images/footerlogo/whats.png" alt="whatsapp"></a></li>
+				<li><a href="https://www.instagram.com/imperiofrancisca/?theme=dark" target="_blank"><img src="images/footerlogo/insta.png" alt="instagram"></a></li>
+				<li><a href="#"><img src="images/footerlogo/face.png" alt="facebook"></a></li>
+				<li><a href="#"><img src="images/footerlogo/youtube.png" alt="youtube"></a></li>
+				<li><a href="#"><img src="images/footerlogo/tiktok.png" alt="tiktok"></a></li>
+				<li><a href="#"><img src="images/footerlogo/linked.png" alt="linkedin"></a></li>
+				<li><a href="#"><img src="images/footerlogo/twitterx.png" alt="x twitter"></a></li>
+			</ul>
+		</div>
+		<!-- FOOTERBLOCK INSTITUCIONAL -->
+		<div class="footerblock">
+			<h1>Institucional</h1>
+			<ul>
+				<!-- ITENS INTITUCIONAIS --> 
+				<li class="footeritem"><a href="Institucional/sobre.html">Sobre o Império Francisca</a></li>
+				<li class="footeritem"><a href="Institucional/termos.html">Termos e condições</a></li>
+				<li class="footeritem"><a href="Institucional/historia.html">Nossa história</a></li>
+				<li class="footeritem"><a href="Institucional/troca.html">Trocas e Devoluções</a></li> 
+			</ul>
+		</div>
+	</footer>
+	<div id="creditsFooter">
+		<h3>Quer um site igual a este? <a href="https://github.com/AndreFilipeD" target="_blank">Clique aqui</a> e saiba mais.</h3>
+	</div>
+		<!-- CAIXA FADE AO ABRIR ALGUM MENU LATERAL, TAMBEM SERVE COMO BOTÃO PARA RETORNAR -->
+		<div class="shadowBox" onclick="clickthrow(0)" style="display: none;"></div>
+		<!-- BARRA DE MENU DA ESQUERDA -->
+		<div class="left_menuBar" style="display: none;">
+			<div id="menuHeader">
+				<!-- TITULO DA BARRA DE NAVEGAÇÃO ESQUERDA -->
+				<h1>Navegue por categoria</h1>
+				<!-- BOTÃO DE FECHAR BARRA DE NAVEGAÇÃO ESQUERDA -->
+				<span onclick="clickthrow(0)"><img src="images/icons/betterclose.png" alt="fecharMenu"></span>
+			</div>
+			<ul>
+				<!-- ITENS DA BARRA DE NAVEGAÇÃO ESQUERDA -->
+				<li  class="menuItens" onclick="loadProduct('none'),clickthrow(0)">○ Mostrar todos</li>
+				<li class="menuTitles"><img src="images/menuicons/roupas.png" alt="roupas">Roupas</li>
+				<li class="menuItens" onclick="loadProduct('Camisa'),clickthrow(0)">• Camisas</li>
+				<li class="menuItens" onclick="loadProduct('Calça'),clickthrow(0)">• Calças</li>
+				<li class="menuItens" onclick="loadProduct('Vestido'),clickthrow(0)">• Vestidos</li>
+				<li class="menuTitles"><img src="images/menuicons/joias.png" alt="acessorios">Acessórios</li>
+				<li class="menuItens" onclick="loadProduct('Bolsa'),clickthrow(0)">• Bolsas</li>
+				<li class="menuItens" onclick="loadProduct('Cinto'),clickthrow(0)">• Cintos</li>
+				<li class="menuItens" onclick="loadProduct('Joias'),clickthrow(0)">• Porta-Joias</li>
+				<li class="menuItens" onclick="loadProduct('Brincos'),clickthrow(0)">• Brincos</li>
+			</ul>
+		</div>
+		<!-- CARRINHO DE COMPRAS -->
+		<div class="right_cartShop">
+			<div id="cartHeader">
+				<span onclick="clickthrow(0)"><img src="images/icons/betterclose.png" alt="closeMenu"></span>
+				<h1>Carrinho de compras</h1>
+			</div>
+			<div class="cartBody">
+				<div class="cartList"><div class="cartListnone">Você ainda não tem nenhum item em seu carrinho</div><img src="images/icons/saderror.png" alt="nonecart"></div>
+				<div class="cartTotal">
+					<div class="cartResume"><strong class="smallpricetext">Você possui <strong>0</strong> item(ns) em seu carrinho.</strong></div>
+					<a class="cartSendButton nselm" href="https://api.whatsapp.com/send/?phone=19997597681&text=🦒Olá, Império Francisca! Gostaria de entrar em contato para tirar uma dúvida. 💖" target="_blank">Enviar ao Whatsapp</a>
+				</div>
+			</div>
+		</div>
+		<!-- CONECTE-SE -->
+		<div class="center_connectPlus">
+			<div id="centerHeart">
+				<h1>Entre em contato</h1>
+				<span onclick="clickthrow(0)"><img src="images/icons/betterclose.png" alt="fecharMenu"></span>
+			</div>
+			<div class="heartSpace">
+				<a class="heartWhats" href="https://api.whatsapp.com/send/?phone=19997597681&text=🦒Olá, Império Francisca! Gostaria de entrar em contato para tirar uma dúvida. 💖" target="_blank"><img src="images/icons/scart.png" alt="icone carrinho">Chame no Whatsapp</a>
+				<a class="heartInsta" href="https://ig.me/m/imperiofrancisca/" target="_blank"><img src="images/icons/scart.png" alt="icone carrinho">Chame no Instagram</a>
+			</div>
+		</div>	
+	<!-- SCRIPT GERAL DA PAGINA -->
+	<script src="script/script.js"></script>
+	<script src="script/produtos.js"></script>
+</body>
+</html>

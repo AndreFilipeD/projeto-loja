@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Império Francisca</title>
+	<link rel="shortcut icon" href="images/lb.svg" type="image/x-icon">
+	<link rel="stylesheet" href="../estilos/slide.css">
+</head>
+<body>
+		<section id="slider">
+			<div id="slides">
+
+				<input type="radio" name="slider-btn" id="sliderbtn1" onclick="clickslide(1)">
+				<input type="radio" name="slider-btn" id="sliderbtn2" onclick="clickslide(2)">
+				<input type="radio" name="slider-btn" id="sliderbtn3" onclick="clickslide(3)">
+				<input type="radio" name="slider-btn" id="sliderbtn4" onclick="clickslide(4)">
+
+				<div class="slide first">
+					<img src="../images/slides/mobile/slidea.jpg" alt="slide A">
+				</div>
+				<div class="slide">
+					<img src="../images/slides/mobile/slideb.jpg" alt="slide B">
+				</div>
+				<div class="slide">
+					<img src="../images/slides/mobile/slidec.jpg" alt="slide C">
+				</div>
+				<div class="slide">
+					<img src="../images/slides/mobile/slided.jpg" alt="slide D">
+				</div>
+
+				<div class="navigation-auto">
+					<div class="auto-btn1"></div>
+					<div class="auto-btn2"></div>
+					<div class="auto-btn3"></div>
+					<div class="auto-btn4"></div>
+				</div>
+
+				<div class="manual-navigation">
+					<label for="sliderbtn1" class="manual-btn"></label>
+					<label for="sliderbtn2" class="manual-btn"></label>
+					<label for="sliderbtn3" class="manual-btn"></label>
+					<label for="sliderbtn4" class="manual-btn"></label>
+				</div>
+
+			</div>
+		</section>
+
+	<script src="../script/script.js"></script>
+</body>
+</html>
