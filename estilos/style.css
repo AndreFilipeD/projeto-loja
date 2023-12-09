@@ -348,10 +348,10 @@ main{ /* MAIN */
 	
 }
 .shopProduct{
-	margin-top: calc(2vw + 15px);
+	margin-top: calc(2vw + 8px);
 	margin-right: .5vw;
 	margin-left: .5vw;
-	width: 200px;
+	width: 180px;
 	height: 320px;
 	border: 1px solid var(--verylightgray);
 	outline: 0px double var(--mainbackcolor);
@@ -501,7 +501,7 @@ footer{ /* FOOTER */
 	margin-left: 0px;
 	top: 0%;
 	left: 0px;
-	width: 350px;
+	width: 250px;
 	height: 100%;
 	background-color: white;
 	box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.250);
@@ -547,7 +547,7 @@ footer{ /* FOOTER */
 	display: flex;
 	flex-direction: row;
 	height: 50px;
-	font-size: .6em;
+	font-size: .4em;
 	background-color: var(--mainbackcolor);
 	color: white;
 }

@@ -206,14 +206,7 @@
         margin-bottom: 50px;
         margin-left: -10px;
         background-color: #FFCAB8;
-        /*border: 1.5px dotted black;*/
-        /*border: 3px double black;*/
-        /*border: 4px double #883636;*/
         border: 4px double #883636;
-        /*border: 2px dotted black;*/
-        /*border: 2px dotted #883636;*/
-        /*border: 2px dotted #883636;*/
-        /*border: 4px outset #883636;*/
         border-radius: 0px 15px 0px 15px;
         color: #883636;
     
@@ -332,7 +325,6 @@
         margin-left: 24.8px;
         width: 200px;
         height: 280px;
-        border: 1px solid rgb(207, 207, 207);
     }
     .pshowShare{
         text-align: center;
