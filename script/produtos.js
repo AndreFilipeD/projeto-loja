@@ -3,6 +3,8 @@ var unitMonetaria = "R$ ";
 var sliderPage = window.document.getElementById('mainSlider');
 var filtro = "none";
 var cont = 0; memory = 0; memoryB = 0;
+var sizeSelected = -1;
+var storageSize
 var antigoval = 0;
 var atualval = 0;
 var mostruarioIndice = -1;
@@ -12,103 +14,113 @@ var carrinhoLoja = []
 var produtosLoja = [
     //---------------------------------------------
     {nome:'Blusa de exemplo',
-    indice:0,qnt:0,alt:'Camiseta',
-    img_a:'produtos/oficial/conjunto_calca.png',
-    img_b:'produtos/oficial/conjunto_calca.webp',
-    img_c:'produtos/oficial/conjunto_calca.png',
-    info:'Blusa branca padrão feita de algodão',
-    peso:'198g',cor:'azul',tamanho:'M',material:'algodão',
-    valorAntigo:79.90,
-    valorAtual:49.99,
-    categoria:['Calça']}
-    ,//---------------------------------------------
-    {nome:'Blusa de exemplo',
-    indice:0,qnt:0,alt:'Camiseta',
-    img_a:'produtos/oficial/conjunto_calca2.png',
-    img_b:'produtos/oficial/conjunto_calca2.png',
-    img_c:'produtos/oficial/conjunto_calca2.png',
-    info:'Blusa branca padrão feita de algodão',
-    peso:'198g',cor:'azul',tamanho:'M',material:'algodão',
-    valorAntigo:59.90,
-    valorAtual:39.99,
-    categoria:['Calça']}
-    ,//---------------------------------------------
-    {nome:'Blusa de exemplo',
-    indice:0,qnt:0,alt:'Camiseta',
+    indice:0,qnt:0,size:0,alt:'Camiseta',
     img_a:'produtos/roupas_Teste/blusa_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     info:'Blusa branca padrão feita de algodão',
-    peso:'198g',cor:'azul',tamanho:'M',material:'algodão',
+    peso:'198g',cor:'azul',material:'algodão',
+    tamanho:['P','M','G'],
     valorAntigo:0,
     valorAtual:39.99,
     categoria:['Camisa']}
     ,//---------------------------------------------
     {nome:'Super conjunto social de casal para festas de exemplo',
-    indice:0,qnt:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_casal_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_casal_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_casal_exemplo.png',
     info:'Conjunto social de luxo para eventos de alto nivel',
-    peso:'853g',cor:'vermelho',tamanho:'M, P, G',material:'algodão, poliester e nanofibras',
+    peso:'853g',cor:'vermelho',material:'algodão, poliester e nanofibras',
+    tamanho:['M'],
     valorAntigo:599.90,
     valorAtual:129.90,
     categoria:['Camisa','Vestido','Calça']}
     ,//---------------------------------------------
     {nome:'Conjunto feminino de exemplo',
-    indice:0,qnt:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_feminino_exemplo.png',
     img_b:'produtos/roupas_Teste/vestido_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_feminino_exemplo.png',
     info:'Conjunto de peças feminina para o dia a dia',
-    peso:'378g',cor:'verde',tamanho:'M',material:'algodão e poliester',
+    peso:'378g',cor:'verde',material:'algodão e poliester',
+    tamanho:['M'],
     valorAntigo:89.90,
     valorAtual:74.49,
     categoria:['Camisa','Vestido']}
     ,//---------------------------------------------
     {nome:'Conjunto masculino de exemplo',
-    indice:0,qnt:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     info:'Conjunto masculino leve e respirável para a prática de esporte',
-    peso:'328g',cor:'branco',tamanho:'M',material:'Poliester',
+    peso:'328g',cor:'branco',material:'Poliester',
+    tamanho:['M'],
     valorAntigo:99.90,
     valorAtual:64.90,
     categoria:['Camisa','Calça']}
     ,//---------------------------------------------
     {nome:'Conjunto unisex de exemplo',
-    indice:0,qnt:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     info:'Camiseta branca e calça jeans unisex padrão para uso geral',
-    peso:'521g',cor:'preto e azul',tamanho:'M',material:'algodão e Jeans',
+    peso:'521g',cor:'preto e azul',material:'algodão e Jeans',
+    tamanho:['M'],
     valorAntigo:74.99,
     valorAtual:69.90,
     categoria:['Camisa','Calça']}
     ,//---------------------------------------------
     {nome:'Vestido luxuoso de exemplo',
-    indice:0,qnt:0,alt:'Vestido',
+    indice:0,qnt:0,size:0,alt:'Vestido',
     img_a:'produtos/roupas_Teste/vestido_exemplo.png',
     img_b:'produtos/roupas_Teste/vestido_exemplo.png',
     img_c:'produtos/roupas_Teste/vestido_exemplo.png',
     info:'Vestido estilizado e embedado em joias para eventos de alto nivel',
-    peso:'679g',cor:'rosa',tamanho:'M',material:'nanofibras e zircônio',
+    peso:'679g',cor:'rosa',material:'nanofibras e zircônio',
+    tamanho:['40','42','44'],
     valorAntigo:569.35,
     valorAtual:378.89,
     categoria:['Vestido']}
     ,//---------------------------------------------
     {nome:'Vestido casual de exemplo',
-    indice:0,qnt:0,alt:'Vestido',
+    indice:0,qnt:0,size:0,alt:'Vestido',
     img_a:'produtos/roupas_Teste/vestido_exemplo.png',
     img_b:'produtos/roupas_Teste/vestido_exemplo.png',
     img_c:'produtos/roupas_Teste/vestido_exemplo.png',
     info:'Vestido casual para o dia a dia',
-    peso:'443g',cor:'violeta',tamanho:'M',material:'algodão',
+    peso:'443g',cor:'violeta',material:'algodão',
+    tamanho:['M'],
     valorAntigo:49.90,
     valorAtual:45.90,
     categoria:['Vestido']}
+    ,//---------------------------------------------
+    {nome:'Blusa de exemplo',
+    indice:0,qnt:0,size:0,alt:'Camiseta',
+    img_a:'produtos/oficial/conjunto_calca.png',
+    img_b:'produtos/oficial/conjunto_calca.webp',
+    img_c:'produtos/oficial/conjunto_calca.png',
+    info:'Blusa branca padrão feita de algodão',
+    peso:'198g',cor:'azul',material:'algodão',
+    tamanho:['M'],
+    valorAntigo:79.90,
+    valorAtual:49.99,
+    categoria:['Calça']}
+    ,//---------------------------------------------
+    {nome:'Blusa de exemplo',
+    indice:0,qnt:0,size:0,alt:'Camiseta',
+    img_a:'produtos/oficial/conjunto_calca2.png',
+    img_b:'produtos/oficial/conjunto_calca2.png',
+    img_c:'produtos/oficial/conjunto_calca2.png',
+    info:'Blusa branca padrão feita de algodão',
+    peso:'198g',cor:'azul',material:'algodão',
+    tamanho:['M'],
+    valorAntigo:59.90,
+    valorAtual:39.99,
+    categoria:['Calça']}
+    ,
 
 ]//||------||------|| FIM DOS PRODUTOS DA LOJA ||------||------||
 
@@ -202,6 +214,14 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
         }else{// /\ Valor anterior > 0 || \/ Valor anterior =< 0
         window.document.querySelector(".pshowCartadd").innerHTML=`<h2 class="pshowName">${produtosLoja[showIs].nome}</h2><br><strong class="actualPrice"><strong class="smallpricetext">por </strong>R$ ${produtosLoja[showIs].valorAtual.toFixed(2).replace('.',',')}<strong class="smallpricetext"> à vista</strong></strong>`;
         }
+        //Seletor de tamanho (EM CRIAÇÃO EM CRIAÇÃO)
+        if(produtosLoja[showIs].tamanho.length > 1){
+            
+            window.document.querySelector(".pshowCartadd").innerHTML+=`<br><div class="cartsizeSelect"><p style="font-size: .8em;">Selecione o tamanho</p></div>`
+            for(c in produtosLoja[showIs].tamanho){
+                window.document.querySelector(".cartsizeSelect").innerHTML+=`<div class="csizeButton" onclick="setSize(${c})">${produtosLoja[showIs].tamanho[c]}</div>`
+            }
+        }
         //Atualiza IMAGEM PRINCIPAL produto selecionado
         window.document.querySelector(".pshowMainimage").setAttribute('src',produtosLoja[showIs].img_a);
         //Atualiza IMAGENS SEGUNDARIAS prod.selecionado
@@ -217,6 +237,16 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
         }
     }
 }
+
+function setSize(sizeIs){
+    storageSize = window.document.getElementsByClassName("csizeButton")
+    for(c in storageSize){
+        storageSize[c].style=""
+    }
+    sizeSelected=sizeIs
+    storageSize[sizeSelected].style="border: 2px solid #883636; background-color: #883636;color: white;"
+}
+
 function changePicture(picIs){// MUDA A FOTO AO CLICAR NO MOSTRUÁRIO
     switch(picIs){
         case 1:
@@ -239,17 +269,18 @@ function addCart(sel){// ADICIONA OU ACRESCENTA, ATUALIZA E ENVIA CARRINHO DE CO
                 cont++;memory=c;
             }
         }
-        if(cont>0){
+        if(cont>0){//Acrescenta o item em +1 caso ele já esteja na loja
             carrinhoLoja[memory].qnt+=1;
         }else{
             carrinhoLoja.push(produtosLoja[mostruarioIndice]);
             produtosLoja[mostruarioIndice].qnt = 1;
+            carrinhoLoja[carrinhoLoja.length-1].size=sizeSelected
         }
     }
     memory=0
     memoryB=0
     for(c in carrinhoLoja){
-        window.document.querySelector(".cartList").innerHTML+=`<div class="cartElement"><img class="cartElementImg" src="${carrinhoLoja[c].img_a}" alt="${carrinhoLoja[c].alt}"><div class="cartElementName">${carrinhoLoja[c].nome}<br><br><strong>R$ ${carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}</strong></div><div class="cartElementInfo"><strong>tamanho: </strong>${carrinhoLoja[c].tamanho}<br><strong>cor: </strong>${carrinhoLoja[c].cor}</div><div class="cartElementConfig"><div class="cartECplus nselm" onclick="changeCart(${c},2)">+</div><div class="cartQntValue nselm">${carrinhoLoja[c].qnt}</div><div class="cartECless nselm" onclick="changeCart(${c},1)">-</div><img class="cartECjunk nselm" onclick="changeCart(${c},0)" src="images/icons/delete.png" alt="${carrinhoLoja[c].alt}"></div></div>`
+        window.document.querySelector(".cartList").innerHTML+=`<div class="cartElement"><img class="cartElementImg" src="${carrinhoLoja[c].img_a}" alt="${carrinhoLoja[c].alt}"><div class="cartElementName">${carrinhoLoja[c].nome}<br><br><strong>R$ ${carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}</strong></div><div class="cartElementInfo"><strong>tamanho: </strong>${carrinhoLoja[c].tamanho[carrinhoLoja[c].size]}<br><strong>cor: </strong>${carrinhoLoja[c].cor}</div><div class="cartElementConfig"><div class="cartECplus nselm" onclick="changeCart(${c},2)">+</div><div class="cartQntValue nselm">${carrinhoLoja[c].qnt}</div><div class="cartECless nselm" onclick="changeCart(${c},1)">-</div><img class="cartECjunk nselm" onclick="changeCart(${c},0)" src="images/icons/delete.png" alt="${carrinhoLoja[c].alt}"></div></div>`
         memory+=(carrinhoLoja[c].valorAtual*carrinhoLoja[c].qnt)
         memoryB+=(carrinhoLoja[c].qnt)
     }
@@ -264,7 +295,7 @@ Acabei de montar meu carrinho! 💖
 
       for(c in carrinhoLoja){
         txtsend+= encodeURIComponent(`
-• ${carrinhoLoja[c].nome} - ${carrinhoLoja[c].qnt} un x ${unitMonetaria+carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}`)
+• ${carrinhoLoja[c].nome} - ${carrinhoLoja[c].tamanho[carrinhoLoja[c].size]} - ${carrinhoLoja[c].qnt} un x ${unitMonetaria+carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}`)
       }
       txtsend+=encodeURIComponent(`
 ____________________________________________________

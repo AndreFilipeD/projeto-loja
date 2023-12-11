@@ -112,6 +112,7 @@
         font-size: .7em;
     }
     #showProduct{
+        border: 1px solid red;
         margin: 15px auto 60px auto;
         max-width: 1200px;
         padding: 0px 15px;
@@ -120,6 +121,22 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
         grid-template-areas: "mimg" "simg" "cart" "cbtn" "share" "def";
+    }
+    .cartsizeSelect{
+        margin-top: auto;
+        color: rgb(22, 22, 22);
+        font-family: var(--usualFont);
+        font-size: 2.2em;
+    }
+    .csizeButton{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 2px solid black;
+        color: var(--mainbackcolor);
+        text-align: center;
     }
 }
 
