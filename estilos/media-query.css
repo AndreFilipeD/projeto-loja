@@ -112,7 +112,6 @@
         font-size: .7em;
     }
     #showProduct{
-        border: 1px solid red;
         margin: 15px auto 60px auto;
         max-width: 1200px;
         padding: 0px 15px;
@@ -134,7 +133,7 @@
         height: 40px;
         margin-right: 10px;
         border-radius: 5px;
-        border: 2px solid black;
+        border: 3px solid black;
         color: var(--mainbackcolor);
         text-align: center;
     }

@@ -165,7 +165,6 @@ main{ /* MAIN */
 	overflow-x: hidden;
 }
 #showProduct{
-	border: 1px solid blue;
 	margin: 20px auto 60px auto;
 	max-width: 1200px;
 
@@ -233,15 +232,17 @@ main{ /* MAIN */
 	height: 40px;
 	margin-right: 10px;
 	border-radius: 5px;
-	border: 2px solid black;
+	border: 3px solid black;
 	color: var(--mainbackcolor);
 	text-align: center;
+	font-weight: 600;
 	transition: .4s;
 }
 .csizeButton:hover{
 	transition: .4s;
 	background-color: var(--secbackcolor);
 	cursor: pointer;
+	color: black;
 }
 .cartButton{
 	display: flex;

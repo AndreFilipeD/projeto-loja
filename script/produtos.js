@@ -12,6 +12,7 @@ var txtsend = ''
 var telnumber = 19997597681
 var carrinhoLoja = []
 var produtosLoja = [
+
     //---------------------------------------------
     {nome:'Blusa de exemplo',
     indice:0,qnt:0,size:0,alt:'Camiseta',
@@ -56,7 +57,7 @@ var produtosLoja = [
     img_c:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     info:'Conjunto masculino leve e respirável para a prática de esporte',
     peso:'328g',cor:'branco',material:'Poliester',
-    tamanho:['M'],
+    tamanho:['PP','P','M','G','GG','XG'],
     valorAntigo:99.90,
     valorAtual:64.90,
     categoria:['Camisa','Calça']}
@@ -68,7 +69,7 @@ var produtosLoja = [
     img_c:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     info:'Camiseta branca e calça jeans unisex padrão para uso geral',
     peso:'521g',cor:'preto e azul',material:'algodão e Jeans',
-    tamanho:['M'],
+    tamanho:['33','36','41','47'],
     valorAntigo:74.99,
     valorAtual:69.90,
     categoria:['Camisa','Calça']}
@@ -120,7 +121,6 @@ var produtosLoja = [
     valorAntigo:59.90,
     valorAtual:39.99,
     categoria:['Calça']}
-    ,
 
 ]//||------||------|| FIM DOS PRODUTOS DA LOJA ||------||------||
 
@@ -193,6 +193,11 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
         window.document.querySelector("#mainSlider").style="display: block;";
         mostruarioIndice = -1;
     }else{
+        //Resetando tamanho selecionado
+        sizeSelected = -1
+        //Resetando cor do botão de adicionar
+        window.document.querySelector(".cartButton").style=""
+        window.document.querySelector(".cartButton").innerHTML="Adicionar ao carrinho"
         //Coletando Indice de Mostruário atual
         mostruarioIndice = showIs;
         //Coletando preço para atualização
@@ -210,18 +215,18 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
         window.document.querySelector(".pshowDef").innerHTML=`<strong>Peso:</strong> ${produtosLoja[showIs].peso}<br><strong>Cor: </strong>${produtosLoja[showIs].cor}<strong><br>Tamanho:</strong> ${produtosLoja[showIs].tamanho}<br><strong>Material:</strong> ${produtosLoja[showIs].material}<br><br><hr><strong>Descrição do produto<br></strong>${produtosLoja[showIs].info}`;
         //Verificando se terá valorAntigo, Para assim atualizar corretamente
         if(antigoval>0){
-        window.document.querySelector(".pshowCartadd").innerHTML=`<h2 class="pshowName">${produtosLoja[showIs].nome}</h2><strong class="olderPrice">de: ${unitMonetaria+produtosLoja[showIs].valorAntigo.toFixed(2).replace('.',',')}</strong><br><strong class="actualPrice"><strong class="smallpricetext">por </strong>R$ ${produtosLoja[showIs].valorAtual.toFixed(2).replace('.',',')}<strong class="smallpricetext"> à vista</strong></strong>`;
+        window.document.querySelector(".pshowCartadd").innerHTML=`<h2 class="pshowName">${produtosLoja[showIs].nome}</h2><strong class="olderPrice">de: ${unitMonetaria+produtosLoja[showIs].valorAntigo.toFixed(2).replace('.',',')}</strong><strong class="actualPrice"><strong class="smallpricetext">por </strong>R$ ${produtosLoja[showIs].valorAtual.toFixed(2).replace('.',',')}<strong class="smallpricetext"> à vista</strong></strong>`;
         }else{// /\ Valor anterior > 0 || \/ Valor anterior =< 0
         window.document.querySelector(".pshowCartadd").innerHTML=`<h2 class="pshowName">${produtosLoja[showIs].nome}</h2><br><strong class="actualPrice"><strong class="smallpricetext">por </strong>R$ ${produtosLoja[showIs].valorAtual.toFixed(2).replace('.',',')}<strong class="smallpricetext"> à vista</strong></strong>`;
         }
-        //Seletor de tamanho (EM CRIAÇÃO EM CRIAÇÃO)
+        //criando seletor de tamanho, caso haja mais de 1 - SELETOR DE TAMANHO
         if(produtosLoja[showIs].tamanho.length > 1){
             
-            window.document.querySelector(".pshowCartadd").innerHTML+=`<br><div class="cartsizeSelect"><p style="font-size: .8em;">Selecione o tamanho</p></div>`
+            window.document.querySelector(".pshowCartadd").innerHTML+=`<br><div class="cartsizeSelect nselm"><p style="font-size: .8em;">Selecione o tamanho</p></div>`
             for(c in produtosLoja[showIs].tamanho){
                 window.document.querySelector(".cartsizeSelect").innerHTML+=`<div class="csizeButton" onclick="setSize(${c})">${produtosLoja[showIs].tamanho[c]}</div>`
             }
-        }
+        }else{sizeSelected=0}
         //Atualiza IMAGEM PRINCIPAL produto selecionado
         window.document.querySelector(".pshowMainimage").setAttribute('src',produtosLoja[showIs].img_a);
         //Atualiza IMAGENS SEGUNDARIAS prod.selecionado
@@ -239,12 +244,14 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
 }
 
 function setSize(sizeIs){
+    window.document.querySelector(".cartButton").style=""
+    window.document.querySelector(".cartButton").innerHTML="Adicionar ao carrinho"
     storageSize = window.document.getElementsByClassName("csizeButton")
     for(c in storageSize){
         storageSize[c].style=""
     }
     sizeSelected=sizeIs
-    storageSize[sizeSelected].style="border: 2px solid #883636; background-color: #883636;color: white;"
+    storageSize[sizeSelected].style="border: 3px solid #883636; background-color: #883636;color: white;"
 }
 
 function changePicture(picIs){// MUDA A FOTO AO CLICAR NO MOSTRUÁRIO
@@ -261,6 +268,8 @@ function changePicture(picIs){// MUDA A FOTO AO CLICAR NO MOSTRUÁRIO
     }
 }
 function addCart(sel){// ADICIONA OU ACRESCENTA, ATUALIZA E ENVIA CARRINHO DE COMPRAS
+if(sizeSelected!=-1){
+    clickthrow(2)
     cont = 0;
     window.document.querySelector(".cartList").innerHTML="";
     if(sel===1){
@@ -298,7 +307,7 @@ Acabei de montar meu carrinho! 💖
 • ${carrinhoLoja[c].nome} - ${carrinhoLoja[c].tamanho[carrinhoLoja[c].size]} - ${carrinhoLoja[c].qnt} un x ${unitMonetaria+carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}`)
       }
       txtsend+=encodeURIComponent(`
-____________________________________________________
+_________________________________
 Total:
 ${unitMonetaria+memory.toLocaleString('pt-BR', {
     minimumFractionDigits: 2,
@@ -308,6 +317,12 @@ ${unitMonetaria+memory.toLocaleString('pt-BR', {
 Fico no aguardo de seu atendimento.`)
 
       window.document.querySelector('.cartSendButton').setAttribute("href","https://api.whatsapp.com/send/?phone="+telnumber+"&text="+txtsend)
+
+}else{//Caso não tenha escolhido um tamanho
+    //window.document.querySelector(".cartButton").setAttribute("onclick","addCart(1), clickthrow(0)")
+    window.document.querySelector(".cartButton").style="background-color: #883636;box-shadow: 0px 2px 0px #602626;"
+    window.document.querySelector(".cartButton").innerHTML="Escolha um tamanho!"
+}
 }
 
 function changeCart(selected, action){// CONTROLA QUANTIDADE POR PRODUTO E NOTIFICA SITUAÇÃO
