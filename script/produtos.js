@@ -15,108 +15,117 @@ var produtosLoja = [
 
     //---------------------------------------------
     {nome:'Blusa de exemplo',
-    indice:0,qnt:0,size:0,alt:'Camiseta',
+    indice:0,qnt:0,size:0,color:0,alt:'Camiseta',
     img_a:'produtos/roupas_Teste/blusa_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     info:'Blusa branca padrão feita de algodão',
-    peso:'198g',cor:'azul',material:'algodão',
+    peso:'198g',material:'algodão',
+    cor:['azul'],
     tamanho:['P','M','G'],
     valorAntigo:0,
     valorAtual:39.99,
     categoria:['Camisa']}
     ,//---------------------------------------------
     {nome:'Super conjunto social de casal para festas de exemplo',
-    indice:0,qnt:0,size:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,color:0,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_casal_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_casal_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_casal_exemplo.png',
     info:'Conjunto social de luxo para eventos de alto nivel',
-    peso:'853g',cor:'vermelho',material:'algodão, poliester e nanofibras',
+    peso:'853g',material:'algodão, poliester e nanofibras',
+    cor:['vermelho'],
     tamanho:['M'],
     valorAntigo:599.90,
     valorAtual:129.90,
     categoria:['Camisa','Vestido','Calça']}
     ,//---------------------------------------------
     {nome:'Conjunto feminino de exemplo',
-    indice:0,qnt:0,size:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,color:0,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_feminino_exemplo.png',
     img_b:'produtos/roupas_Teste/vestido_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_feminino_exemplo.png',
     info:'Conjunto de peças feminina para o dia a dia',
-    peso:'378g',cor:'verde',material:'algodão e poliester',
+    peso:'378g',material:'algodão e poliester',
+    cor:['verde'],
     tamanho:['M'],
     valorAntigo:89.90,
     valorAtual:74.49,
     categoria:['Camisa','Vestido']}
     ,//---------------------------------------------
     {nome:'Conjunto masculino de exemplo',
-    indice:0,qnt:0,size:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,color:0,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     info:'Conjunto masculino leve e respirável para a prática de esporte',
-    peso:'328g',cor:'branco',material:'Poliester',
+    peso:'328g',material:'Poliester',
+    cor:['branco'],
     tamanho:['PP','P','M','G','GG','XG'],
     valorAntigo:99.90,
     valorAtual:64.90,
     categoria:['Camisa','Calça']}
     ,//---------------------------------------------
     {nome:'Conjunto unisex de exemplo',
-    indice:0,qnt:0,size:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,color:0,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     info:'Camiseta branca e calça jeans unisex padrão para uso geral',
-    peso:'521g',cor:'preto e azul',material:'algodão e Jeans',
+    peso:'521g',material:'algodão e Jeans',
+    cor:['preto','azul'],
     tamanho:['33','36','41','47'],
     valorAntigo:74.99,
     valorAtual:69.90,
     categoria:['Camisa','Calça']}
     ,//---------------------------------------------
     {nome:'Vestido luxuoso de exemplo',
-    indice:0,qnt:0,size:0,alt:'Vestido',
+    indice:0,qnt:0,size:0,color:0,alt:'Vestido',
     img_a:'produtos/roupas_Teste/vestido_exemplo.png',
     img_b:'produtos/roupas_Teste/vestido_exemplo.png',
     img_c:'produtos/roupas_Teste/vestido_exemplo.png',
     info:'Vestido estilizado e embedado em joias para eventos de alto nivel',
-    peso:'679g',cor:'rosa',material:'nanofibras e zircônio',
+    peso:'679g',material:'nanofibras e zircônio',
+    cor:['rosa'],
     tamanho:['40','42','44'],
     valorAntigo:569.35,
     valorAtual:378.89,
     categoria:['Vestido']}
     ,//---------------------------------------------
     {nome:'Vestido casual de exemplo',
-    indice:0,qnt:0,size:0,alt:'Vestido',
+    indice:0,qnt:0,size:0,color:0,alt:'Vestido',
     img_a:'produtos/roupas_Teste/vestido_exemplo.png',
     img_b:'produtos/roupas_Teste/vestido_exemplo.png',
     img_c:'produtos/roupas_Teste/vestido_exemplo.png',
     info:'Vestido casual para o dia a dia',
-    peso:'443g',cor:'violeta',material:'algodão',
+    peso:'443g',material:'algodão',
+    cor:['violeta'],
     tamanho:['M'],
     valorAntigo:49.90,
     valorAtual:45.90,
     categoria:['Vestido']}
     ,//---------------------------------------------
     {nome:'Blusa de exemplo',
-    indice:0,qnt:0,size:0,alt:'Camiseta',
+    indice:0,qnt:0,size:0,color:0,alt:'Camiseta',
     img_a:'produtos/oficial/conjunto_calca.png',
     img_b:'produtos/oficial/conjunto_calca.webp',
     img_c:'produtos/oficial/conjunto_calca.png',
     info:'Blusa branca padrão feita de algodão',
-    peso:'198g',cor:'azul',material:'algodão',
+    peso:'198g',material:'algodão',
+    cor:['azul'],
     tamanho:['M'],
     valorAntigo:79.90,
     valorAtual:49.99,
     categoria:['Calça']}
     ,//---------------------------------------------
     {nome:'Blusa de exemplo',
-    indice:0,qnt:0,size:0,alt:'Camiseta',
+    indice:0,qnt:0,size:0,color:0,alt:'Camiseta',
     img_a:'produtos/oficial/conjunto_calca2.png',
     img_b:'produtos/oficial/conjunto_calca2.png',
     img_c:'produtos/oficial/conjunto_calca2.png',
     info:'Blusa branca padrão feita de algodão',
-    peso:'198g',cor:'azul',material:'algodão',
+    peso:'198g',material:'algodão',
+    cor:['azul'],
     tamanho:['M'],
     valorAntigo:59.90,
     valorAtual:39.99,
@@ -221,12 +230,15 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
         }
         //criando seletor de tamanho, caso haja mais de 1 - SELETOR DE TAMANHO
         if(produtosLoja[showIs].tamanho.length > 1){
-            
             window.document.querySelector(".pshowCartadd").innerHTML+=`<br><div class="cartsizeSelect nselm"><p style="font-size: .8em;">Selecione o tamanho</p></div>`
             for(c in produtosLoja[showIs].tamanho){
                 window.document.querySelector(".cartsizeSelect").innerHTML+=`<div class="csizeButton" onclick="setSize(${c})">${produtosLoja[showIs].tamanho[c]}</div>`
             }
         }else{sizeSelected=0}
+        //criando seletor de cor, caso haja mais de 1 - SELETOR DE COR
+        if(produtosLoja[showIs].cor.length > 1){
+            window.document.querySelector(".pshowCartadd").innerHTML+=`<div class="cartcolorSelect nselm"><p style="font-size: .8em;">Selecione a cor</p></div>`
+        }
         //Atualiza IMAGEM PRINCIPAL produto selecionado
         window.document.querySelector(".pshowMainimage").setAttribute('src',produtosLoja[showIs].img_a);
         //Atualiza IMAGENS SEGUNDARIAS prod.selecionado
