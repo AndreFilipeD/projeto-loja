@@ -21,7 +21,7 @@ var produtosLoja = [
     img_c:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     info:'Blusa branca padrão feita de algodão',
     peso:'198g',material:'algodão',
-    cor:['azul'],
+    cor:['branco','azul','preto'],
     tamanho:['P','M','G'],
     valorAntigo:0,
     valorAtual:39.99,
@@ -230,14 +230,20 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
         }
         //criando seletor de tamanho, caso haja mais de 1 - SELETOR DE TAMANHO
         if(produtosLoja[showIs].tamanho.length > 1){
-            window.document.querySelector(".pshowCartadd").innerHTML+=`<br><div class="cartsizeSelect nselm"><p style="font-size: .8em;">Selecione o tamanho</p></div>`
+            window.document.querySelector(".pshowCartadd").innerHTML+=`<br><div class="cartsizeSelect nselm" style="margin-top: auto;"><p style="font-size: .8em;">Selecione o tamanho</p></div>`
             for(c in produtosLoja[showIs].tamanho){
                 window.document.querySelector(".cartsizeSelect").innerHTML+=`<div class="csizeButton" onclick="setSize(${c})">${produtosLoja[showIs].tamanho[c]}</div>`
             }
         }else{sizeSelected=0}
         //criando seletor de cor, caso haja mais de 1 - SELETOR DE COR
         if(produtosLoja[showIs].cor.length > 1){
-            window.document.querySelector(".pshowCartadd").innerHTML+=`<div class="cartcolorSelect nselm"><p style="font-size: .8em;">Selecione a cor</p></div>`
+            window.document.querySelector(".pshowCartadd").innerHTML+=`<div class="cartcolorSelect nselm" style=${sizeSelected==-1 ? 'margin-top: 0px;':'margin-top: auto;'}><p style="font-size: .8em;">Selecione a cor</p></div>`
+            /*window.document.querySelector(".cartcolorSelect").style="background-color: blue;margin-top: 0px"*/
+            /*
+            window.document.querySelector(".pshowCartadd").innerHTML+=`<div class="cartcolorSelect nselm" ><p style="font-size: .8em;">Selecione a cor</p></div>`*/
+            for(c in produtosLoja[showIs].cor){
+                window.document.querySelector(".cartcolorSelect").innerHTML+=`<div class="ccolorButton" onclick="setColor(${c})">${produtosLoja[showIs].cor[c]}</div>`
+            }
         }
         //Atualiza IMAGEM PRINCIPAL produto selecionado
         window.document.querySelector(".pshowMainimage").setAttribute('src',produtosLoja[showIs].img_a);
