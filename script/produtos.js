@@ -299,26 +299,55 @@ function changePicture(picIs){// MUDA A FOTO AO CLICAR NO MOSTRUÁRIO
             break;
     }
 }
+function debugPage(){
+    for(c in carrinhoLoja){
+        window.alert(carrinhoLoja[c].size)
+    }
+}
 function addCart(sel){// ADICIONA OU ACRESCENTA, ATUALIZA E ENVIA CARRINHO DE COMPRAS
-if(sizeSelected!=-1){
-    clickthrow(2)
-    cont = 0;
-    window.document.querySelector(".cartList").innerHTML="";
-    if(sel===1){
-        for(c in carrinhoLoja){
-            if(carrinhoLoja[c].indice===produtosLoja[mostruarioIndice].indice){
+if(sizeSelected!=-1){//Se um tamanho já foi selecionado
+    clickthrow(2)//abre carrinho
+    cont = 0;//zera contador
+    window.document.querySelector(".cartList").innerHTML="";//limpa carrinho
+    if(sel===1){//caso esteja adicionando algo ao carrinho
+        
+        for(c in carrinhoLoja){//verifique em todos os itens do carrinho
+            //carrinhoLoja[c].indice===produtosLoja[mostruarioIndice].indice && 
+            if(carrinhoLoja[c].size===sizeSelected){//antes tinha o indice acima
+            //se o tamanho é o mesmo
                 cont++;memory=c;
-            }
+             //cont avisa se o item foi encontrado no carrinho atual
+            }//memory armazena qual item deve receber aumento de quantidade caso seja igual
         }
         if(cont>0){//Acrescenta o item em +1 caso ele já esteja na loja
             carrinhoLoja[memory].qnt+=1;
-        }else{
+        }else{//caso não encontre o mesmo item, cria um novo
             carrinhoLoja.push(produtosLoja[mostruarioIndice]);
             produtosLoja[mostruarioIndice].qnt = 1;
-            carrinhoLoja[carrinhoLoja.length-1].size=sizeSelected
-            carrinhoLoja[carrinhoLoja.length-1].color=colorSelected
+            
+            //Possivel problema: Não se pode chamar objetos por indice
+            // Logo não é possivel atribuir o valor de forma individual
+            //Solução: indexar os objetos dentro do carrinho
+            
+            carrinhoLoja[Number(carrinhoLoja.length - 1)]["size"] = sizeSelected
+            carrinhoLoja[Number(carrinhoLoja.length - 1)]["color"] = colorSelected
+            
+            //carrinhoLoja[0].size=999 PROVOU O PROBLEMA
+
+            for(c in carrinhoLoja){
+                window.alert("Objeto ["+c+"] size:"+carrinhoLoja[c]["size"]+"|| color:"+carrinhoLoja[c]["color"])
+            }
         }
     }
+    criarCarrinho()//cria o carrinho junto de seu texto para Whatsapp
+}else{//Caso não tenha escolhido um tamanho
+    //window.document.querySelector(".cartButton").setAttribute("onclick","addCart(1), clickthrow(0)")
+    window.document.querySelector(".cartButton").style="background-color: #883636;box-shadow: 0px 2px 0px #602626;"
+    window.document.querySelector(".cartButton").innerHTML="Escolha um tamanho!"
+}
+}
+
+function criarCarrinho(){
     memory=0
     memoryB=0
     for(c in carrinhoLoja){
@@ -351,30 +380,28 @@ Fico no aguardo de seu atendimento.`)
 
       window.document.querySelector('.cartSendButton').setAttribute("href","https://api.whatsapp.com/send/?phone="+telnumber+"&text="+txtsend)
 
-}else{//Caso não tenha escolhido um tamanho
-    //window.document.querySelector(".cartButton").setAttribute("onclick","addCart(1), clickthrow(0)")
-    window.document.querySelector(".cartButton").style="background-color: #883636;box-shadow: 0px 2px 0px #602626;"
-    window.document.querySelector(".cartButton").innerHTML="Escolha um tamanho!"
 }
-}
-
 function changeCart(selected, action){// CONTROLA QUANTIDADE POR PRODUTO E NOTIFICA SITUAÇÃO
     switch(action){
-        case 0:
+        case 0://apague o item selecionado
             carrinhoLoja.splice(selected, 1);
             addCart(0);
             break;
-        case 1:
+        case 1://subtrai um do item selecionado
             carrinhoLoja[selected].qnt-=1
+            //caso resultado seja menor que 1, apague o item
             if(carrinhoLoja[selected].qnt<1){
                 carrinhoLoja.splice(selected, 1);
             }
             addCart(0);
             break;
-        case 2:
+        case 2://adiciona mais um ao item selecionado
             carrinhoLoja[selected].qnt+=1
             addCart(0);
             break;
+
+            //o 1 de splice significa que a partir do elemento selected,
+            //ele deve remover apenas 1 elemento.
     }
     if(carrinhoLoja.length<1){
         window.document.querySelector(".cartList").innerHTML=`<div class="cartListnone">Você ainda não tem nenhum item em seu carrinho</div><img src="images/icons/saderror.png" alt="nonecart">`
