@@ -300,9 +300,13 @@ function changePicture(picIs){// MUDA A FOTO AO CLICAR NO MOSTRUÁRIO
     }
 }
 function debugPage(){
-    for(c in carrinhoLoja){
+    window.alert(carrinhoLoja[0].valorAtual)
+    window.alert(carrinhoLoja[1].valorAtual)
+    window.alert(carrinhoLoja[2].valorAtual)
+    window.alert(carrinhoLoja[3].valorAtual)
+    /*for(c in carrinhoLoja){
         window.alert(carrinhoLoja[c].size)
-    }
+    }*/
 }
 function addCart(sel){// ADICIONA OU ACRESCENTA, ATUALIZA E ENVIA CARRINHO DE COMPRAS
 if(sizeSelected!=-1){//Se um tamanho já foi selecionado
@@ -313,33 +317,48 @@ if(sizeSelected!=-1){//Se um tamanho já foi selecionado
         
         for(c in carrinhoLoja){//verifique em todos os itens do carrinho
             //carrinhoLoja[c].indice===produtosLoja[mostruarioIndice].indice && 
-            if(carrinhoLoja[c].size===sizeSelected){//antes tinha o indice acima
+            if(carrinhoLoja[c].size===sizeSelected){//antes tinha o indice 
+            window.alert("se sizeSelected = carrinhoLoja["+c+"]")
             //se o tamanho é o mesmo
                 cont++;memory=c;
              //cont avisa se o item foi encontrado no carrinho atual
             }//memory armazena qual item deve receber aumento de quantidade caso seja igual
         }
         if(cont>0){//Acrescenta o item em +1 caso ele já esteja na loja
+            window.alert("cont > 0"+carrinhoLoja[0].size)
             carrinhoLoja[memory].qnt+=1;
         }else{//caso não encontre o mesmo item, cria um novo
-            carrinhoLoja.push(produtosLoja[mostruarioIndice]);
+            //window.alert('Qnt produtos no carrinho: '+carrinhoLoja.length)
+            carrinhoLoja.unshift(produtosLoja[mostruarioIndice]);
+            window.alert("cont not > 0"+carrinhoLoja[0].size)
+            //window.alert(produtosLoja[mostruarioIndice].size)
+            //window.alert('Qnt produtos no carrinho após push: '+carrinhoLoja.length)
             produtosLoja[mostruarioIndice].qnt = 1;
-            
+
+            /*
+            window.alert(produtosLoja[0].valorAtual)
+            window.alert(produtosLoja[1].valorAtual)
+            window.alert(produtosLoja[2].valorAtual)
+            window.alert(produtosLoja[3].valorAtual)
+            window.alert(produtosLoja[4].valorAtual)
+            window.alert(produtosLoja[5].valorAtual)
+            */
+
             //Possivel problema: Não se pode chamar objetos por indice
             // Logo não é possivel atribuir o valor de forma individual
             //Solução: indexar os objetos dentro do carrinho
-            
-            carrinhoLoja[Number(carrinhoLoja.length - 1)]["size"] = sizeSelected
-            carrinhoLoja[Number(carrinhoLoja.length - 1)]["color"] = colorSelected
+
+            carrinhoLoja[0].size = sizeSelected
+            carrinhoLoja[0].color = colorSelected// = colorSelected
             
             //carrinhoLoja[0].size=999 PROVOU O PROBLEMA
-
+            
             for(c in carrinhoLoja){
-                window.alert("Objeto ["+c+"] size:"+carrinhoLoja[c]["size"]+"|| color:"+carrinhoLoja[c]["color"])
+                window.alert("Objeto ["+c+"] size:"+carrinhoLoja[c].size+"|| color:"+carrinhoLoja[c].color)
             }
         }
     }
-    criarCarrinho()//cria o carrinho junto de seu texto para Whatsapp
+    criarCarrinho()
 }else{//Caso não tenha escolhido um tamanho
     //window.document.querySelector(".cartButton").setAttribute("onclick","addCart(1), clickthrow(0)")
     window.document.querySelector(".cartButton").style="background-color: #883636;box-shadow: 0px 2px 0px #602626;"
@@ -348,6 +367,7 @@ if(sizeSelected!=-1){//Se um tamanho já foi selecionado
 }
 
 function criarCarrinho(){
+    //cria o carrinho junto de seu texto para Whatsapp
     memory=0
     memoryB=0
     for(c in carrinhoLoja){
