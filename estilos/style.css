@@ -226,6 +226,7 @@ main{ /* MAIN */
 	color: rgb(22, 22, 22);
 	font-family: var(--usualFont);
 	font-size: 2.2em;
+	padding-bottom: 5px;
 }
 .csizeButton{
 	display: inline-block;
@@ -266,6 +267,12 @@ main{ /* MAIN */
 	font-weight: 600;
 	font-size: .7em;
 	transition: .4s;
+}
+.ccolorButton:hover{
+	transition: .4s;
+	background-color: var(--secbackcolor);
+	cursor: pointer;
+	color: black;
 }
 .cartButton{
 	display: flex;

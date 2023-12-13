@@ -4,7 +4,9 @@ var sliderPage = window.document.getElementById('mainSlider');
 var filtro = "none";
 var cont = 0; memory = 0; memoryB = 0;
 var sizeSelected = -1;
+var colorSelected = 0;
 var storageSize
+var storageColor
 var antigoval = 0;
 var atualval = 0;
 var mostruarioIndice = -1;
@@ -15,7 +17,7 @@ var produtosLoja = [
 
     //---------------------------------------------
     {nome:'Blusa de exemplo',
-    indice:0,qnt:0,size:0,color:0,alt:'Camiseta',
+    indice:0,qnt:0,size:0,color:1,alt:'Camiseta',
     img_a:'produtos/roupas_Teste/blusa_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
@@ -28,20 +30,20 @@ var produtosLoja = [
     categoria:['Camisa']}
     ,//---------------------------------------------
     {nome:'Super conjunto social de casal para festas de exemplo',
-    indice:0,qnt:0,size:0,color:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,color:1,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_casal_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_casal_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_casal_exemplo.png',
     info:'Conjunto social de luxo para eventos de alto nivel',
     peso:'853g',material:'algodão, poliester e nanofibras',
-    cor:['vermelho'],
+    cor:['vermelho','preto'],
     tamanho:['M'],
     valorAntigo:599.90,
     valorAtual:129.90,
     categoria:['Camisa','Vestido','Calça']}
     ,//---------------------------------------------
     {nome:'Conjunto feminino de exemplo',
-    indice:0,qnt:0,size:0,color:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,color:1,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_feminino_exemplo.png',
     img_b:'produtos/roupas_Teste/vestido_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_feminino_exemplo.png',
@@ -54,7 +56,7 @@ var produtosLoja = [
     categoria:['Camisa','Vestido']}
     ,//---------------------------------------------
     {nome:'Conjunto masculino de exemplo',
-    indice:0,qnt:0,size:0,color:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,color:1,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
@@ -67,7 +69,7 @@ var produtosLoja = [
     categoria:['Camisa','Calça']}
     ,//---------------------------------------------
     {nome:'Conjunto unisex de exemplo',
-    indice:0,qnt:0,size:0,color:0,alt:'Conjunto',
+    indice:0,qnt:0,size:0,color:1,alt:'Conjunto',
     img_a:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     img_b:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
     img_c:'produtos/roupas_Teste/conjunto_unisex_exemplo.png',
@@ -80,7 +82,7 @@ var produtosLoja = [
     categoria:['Camisa','Calça']}
     ,//---------------------------------------------
     {nome:'Vestido luxuoso de exemplo',
-    indice:0,qnt:0,size:0,color:0,alt:'Vestido',
+    indice:0,qnt:0,size:0,color:1,alt:'Vestido',
     img_a:'produtos/roupas_Teste/vestido_exemplo.png',
     img_b:'produtos/roupas_Teste/vestido_exemplo.png',
     img_c:'produtos/roupas_Teste/vestido_exemplo.png',
@@ -93,7 +95,7 @@ var produtosLoja = [
     categoria:['Vestido']}
     ,//---------------------------------------------
     {nome:'Vestido casual de exemplo',
-    indice:0,qnt:0,size:0,color:0,alt:'Vestido',
+    indice:0,qnt:0,size:0,color:1,alt:'Vestido',
     img_a:'produtos/roupas_Teste/vestido_exemplo.png',
     img_b:'produtos/roupas_Teste/vestido_exemplo.png',
     img_c:'produtos/roupas_Teste/vestido_exemplo.png',
@@ -106,7 +108,7 @@ var produtosLoja = [
     categoria:['Vestido']}
     ,//---------------------------------------------
     {nome:'Blusa de exemplo',
-    indice:0,qnt:0,size:0,color:0,alt:'Camiseta',
+    indice:0,qnt:0,size:0,color:1,alt:'Camiseta',
     img_a:'produtos/oficial/conjunto_calca.png',
     img_b:'produtos/oficial/conjunto_calca.webp',
     img_c:'produtos/oficial/conjunto_calca.png',
@@ -119,7 +121,7 @@ var produtosLoja = [
     categoria:['Calça']}
     ,//---------------------------------------------
     {nome:'Blusa de exemplo',
-    indice:0,qnt:0,size:0,color:0,alt:'Camiseta',
+    indice:0,qnt:0,size:0,color:1,alt:'Camiseta',
     img_a:'produtos/oficial/conjunto_calca2.png',
     img_b:'produtos/oficial/conjunto_calca2.png',
     img_c:'produtos/oficial/conjunto_calca2.png',
@@ -204,6 +206,8 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
     }else{
         //Resetando tamanho selecionado
         sizeSelected = -1
+        //Resetando cor selecionada
+        colorSelected = 0
         //Resetando cor do botão de adicionar
         window.document.querySelector(".cartButton").style=""
         window.document.querySelector(".cartButton").innerHTML="Adicionar ao carrinho"
@@ -236,14 +240,16 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
             }
         }else{sizeSelected=0}
         //criando seletor de cor, caso haja mais de 1 - SELETOR DE COR
-        if(produtosLoja[showIs].cor.length > 1){
-            window.document.querySelector(".pshowCartadd").innerHTML+=`<div class="cartcolorSelect nselm" style=${sizeSelected==-1 ? 'margin-top: 0px;':'margin-top: auto;'}><p style="font-size: .8em;">Selecione a cor</p></div>`
-            /*window.document.querySelector(".cartcolorSelect").style="background-color: blue;margin-top: 0px"*/
-            /*
-            window.document.querySelector(".pshowCartadd").innerHTML+=`<div class="cartcolorSelect nselm" ><p style="font-size: .8em;">Selecione a cor</p></div>`*/
-            for(c in produtosLoja[showIs].cor){
+        
+        if(produtosLoja[showIs].cor.length > 1){//Existe mais de 1 cor no produto?
+            window.document.querySelector(".pshowCartadd").innerHTML+=`<div class="cartcolorSelect nselm"><p style="font-size: .8em;">Selecione a cor</p></div>`
+
+            window.document.querySelector(".cartcolorSelect").style="margin-top: 0px;"
+            for(c in produtosLoja[showIs].cor){//Criando botões de cor
                 window.document.querySelector(".cartcolorSelect").innerHTML+=`<div class="ccolorButton" onclick="setColor(${c})">${produtosLoja[showIs].cor[c]}</div>`
             }
+            storageColor = window.document.getElementsByClassName("ccolorButton")
+            storageColor[colorSelected].style="border: 3px solid #883636; background-color: #883636;color: white;"
         }
         //Atualiza IMAGEM PRINCIPAL produto selecionado
         window.document.querySelector(".pshowMainimage").setAttribute('src',produtosLoja[showIs].img_a);
@@ -270,6 +276,14 @@ function setSize(sizeIs){
     }
     sizeSelected=sizeIs
     storageSize[sizeSelected].style="border: 3px solid #883636; background-color: #883636;color: white;"
+}
+function setColor(colorIs){
+    storageColor = window.document.getElementsByClassName("ccolorButton")
+    for(c in storageColor){
+        storageColor[c].style=""
+    }
+    colorSelected=colorIs
+    storageColor[colorSelected].style="border: 3px solid #883636; background-color: #883636;color: white;"
 }
 
 function changePicture(picIs){// MUDA A FOTO AO CLICAR NO MOSTRUÁRIO
@@ -302,12 +316,13 @@ if(sizeSelected!=-1){
             carrinhoLoja.push(produtosLoja[mostruarioIndice]);
             produtosLoja[mostruarioIndice].qnt = 1;
             carrinhoLoja[carrinhoLoja.length-1].size=sizeSelected
+            carrinhoLoja[carrinhoLoja.length-1].color=colorSelected
         }
     }
     memory=0
     memoryB=0
     for(c in carrinhoLoja){
-        window.document.querySelector(".cartList").innerHTML+=`<div class="cartElement"><img class="cartElementImg" src="${carrinhoLoja[c].img_a}" alt="${carrinhoLoja[c].alt}"><div class="cartElementName">${carrinhoLoja[c].nome}<br><br><strong>R$ ${carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}</strong></div><div class="cartElementInfo"><strong>tamanho: </strong>${carrinhoLoja[c].tamanho[carrinhoLoja[c].size]}<br><strong>cor: </strong>${carrinhoLoja[c].cor}</div><div class="cartElementConfig"><div class="cartECplus nselm" onclick="changeCart(${c},2)">+</div><div class="cartQntValue nselm">${carrinhoLoja[c].qnt}</div><div class="cartECless nselm" onclick="changeCart(${c},1)">-</div><img class="cartECjunk nselm" onclick="changeCart(${c},0)" src="images/icons/delete.png" alt="${carrinhoLoja[c].alt}"></div></div>`
+        window.document.querySelector(".cartList").innerHTML+=`<div class="cartElement"><img class="cartElementImg" src="${carrinhoLoja[c].img_a}" alt="${carrinhoLoja[c].alt}"><div class="cartElementName">${carrinhoLoja[c].nome}<br><br><strong>R$ ${carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}</strong></div><div class="cartElementInfo"><strong>tamanho: </strong>${carrinhoLoja[c].tamanho[carrinhoLoja[c].size]}<br><strong>cor: </strong>${carrinhoLoja[c].cor[carrinhoLoja[c].color]}</div><div class="cartElementConfig"><div class="cartECplus nselm" onclick="changeCart(${c},2)">+</div><div class="cartQntValue nselm">${carrinhoLoja[c].qnt}</div><div class="cartECless nselm" onclick="changeCart(${c},1)">-</div><img class="cartECjunk nselm" onclick="changeCart(${c},0)" src="images/icons/delete.png" alt="${carrinhoLoja[c].alt}"></div></div>`
         memory+=(carrinhoLoja[c].valorAtual*carrinhoLoja[c].qnt)
         memoryB+=(carrinhoLoja[c].qnt)
     }
@@ -322,7 +337,7 @@ Acabei de montar meu carrinho! 💖
 
       for(c in carrinhoLoja){
         txtsend+= encodeURIComponent(`
-• ${carrinhoLoja[c].nome} - ${carrinhoLoja[c].tamanho[carrinhoLoja[c].size]} - ${carrinhoLoja[c].qnt} un x ${unitMonetaria+carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}`)
+• ${carrinhoLoja[c].nome} [${carrinhoLoja[c].cor[carrinhoLoja[c].color]}] ${carrinhoLoja[c].tamanho[carrinhoLoja[c].size]} - ${carrinhoLoja[c].qnt} un x ${unitMonetaria+carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}`)
       }
       txtsend+=encodeURIComponent(`
 _________________________________
