@@ -16,9 +16,9 @@
 	100%{left: -350px;display: none;}}
 @keyframes cartOpen{ /* ANIMAÇÃO CARRINHO ABRINDO */
 	0%{left: 100%;}
-	100%{left: calc(100% - 350px);}}
+	100%{left: calc(100% - 320px);}}
 @keyframes cartClose{ /* ANIMAÇÃO CARRINHO FECHANDO */
-	0%{display: block;left: calc(100% - 350px);}
+	0%{display: block;left: calc(100% - 320px);}
 	100%{left: 100%;}}
 :root{/* - VARIAVEIS - */
    --mainbackcolor:#883636;
@@ -665,7 +665,7 @@ footer{ /* FOOTER */
 	margin-left: 0px;
 	top: 0%;
 	left: 100%;
-	width: 350px;
+	width: 320px;
 	height: 100%;
 	background-color: white;
 	box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.075);
@@ -740,7 +740,7 @@ footer{ /* FOOTER */
 .cartElement{
 	border-radius: 20px;
 	margin: 15px;
-	width: 93%;
+	width: 93%; /*93%*/
 	height: fit-content;
 	border: 1px solid var(--verylightgray);
 	outline: 0px double var(--mainbackcolor);
