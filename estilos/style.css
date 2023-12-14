@@ -82,6 +82,25 @@ header{ /* HEADER */
 	transition: .4s;
 	cursor: pointer;
 }
+/*.cartNumber{
+	position: absolute;
+
+	top:25px;
+	right:25px;
+
+	width: 20px;
+	height: 20px;
+
+	border-radius: 40px;
+
+	text-align: center;
+	font-family: var(--usualFont);
+	font-size: 1em;
+	font-weight: bolder;
+
+	color:white;
+	outline: 2px solid white;
+	background-color: var(--mainbackcolor);}*/
 #leftHeader{
 	width: 100%;
 	display: flex;

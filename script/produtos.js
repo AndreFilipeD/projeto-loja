@@ -1,19 +1,21 @@
-//window.document.getElementById('showProduct').style="display:none;"
-var unitMonetaria = "R$ ";
-var sliderPage = window.document.getElementById('mainSlider');
-var filtro = "none";
-var cont = 0; memory = 0; memoryB = 0;
-var sizeSelected = -1;
-var colorSelected = 0;
-var storageSize
-var storageColor
-var antigoval = 0;
-var atualval = 0;
-var mostruarioIndice = -1;
-var txtsend = ''
-var telnumber = 19997597681
-var carrinhoLoja = []
-var produtosLoja = [
+var sliderPage = window.document.getElementById('mainSlider'); //Coletando Slider para esconde-lo
+var cont = 0; memory = 0; memoryB = 0; // Contadores e memoria para realizar contas
+var sizeSelected = -1;//Reseta o tamanho inicial ao iniciar a pagina
+var storageSize //Array que armazena todos os tamanhos do produto no mostruário
+var storageColor //Array que armazena todas as cores do produto no mostruário
+var antigoval = 0; //Armazena o valor antigo do produto no mostruário
+var atualval = 0; //Armazena o valor atual do produto no mostruário
+var mostruarioIndice = -1;//Armazena qual produto está sendo apresentado no mostruário
+var txtsend = '' //Limpa o texto inicial que seria enviado ao Whatsapp
+var carrinhoLoja = [] // Limpa o carrinho de compras ao carregar o site
+
+//Variaveis de customização -----------------------------
+var colorSelected = 0; // Define a cor inicial do produto sempre a 1º
+var filtro = "none"; // Filtro inicial : "none"; = Sem filtro
+var unitMonetaria = "R$ "; // Unidade monetária utilizada na pagina
+var telnumber = 19997597681 //Telefone de contato da loja
+
+var produtosLoja = [//Produtos da loja - Fazer Backup
 
     //---------------------------------------------
     {nome:'Blusa de exemplo',
@@ -197,7 +199,6 @@ function loadProduct(filtroSelecionado){// CARREGA E FILTRA PRODUTOS SE NECESSÁ
         window.document.querySelector("#msgIntro").innerHTML=`No momento, estamos sem produtos da categoria '${filtro}' <a href='#' onclick='loadProduct("none")' style="padding:2px;">remover filtros</a>.`;
     }
 }loadProduct("none");// padrão "none" Sem filtro
-
 function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
     if(showIs === -1){
         window.document.getElementById('showProduct').style="display:none;";
@@ -266,7 +267,6 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
         }
     }
 }
-
 function setSize(sizeIs){
     window.document.querySelector(".cartButton").style=""
     window.document.querySelector(".cartButton").innerHTML="Adicionar ao carrinho"
@@ -285,7 +285,6 @@ function setColor(colorIs){
     colorSelected=colorIs
     storageColor[colorSelected].style="border: 3px solid #883636; background-color: #883636;color: white;"
 }
-
 function changePicture(picIs){// MUDA A FOTO AO CLICAR NO MOSTRUÁRIO
     switch(picIs){
         case 1:
@@ -299,7 +298,6 @@ function changePicture(picIs){// MUDA A FOTO AO CLICAR NO MOSTRUÁRIO
             break;
     }
 }
-
 function addCart(sel){// ADICIONA OU ACRESCENTA, ATUALIZA E ENVIA CARRINHO DE COMPRAS
 if(sizeSelected!=-1){//Se um tamanho já foi selecionado
     clickthrow(2)//abre carrinho
@@ -329,7 +327,6 @@ if(sizeSelected!=-1){//Se um tamanho já foi selecionado
     window.document.querySelector(".cartButton").innerHTML="Escolha um tamanho!"
 }
 }
-
 function criarCarrinho(){
     //cria o carrinho junto de seu texto para Whatsapp
     memory=0
