@@ -361,9 +361,21 @@ main{ /* MAIN */
 	cursor: pointer;
 }
 .returnLink{
-	font-family: var(--maintext);
-	color: #883636;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: fit-content;
+	font-family: var(--usualFont);
+	font-size: 1.4em;
+	font-weight: 600;
+	color: var(--mainbackcolor);
 	text-decoration: underline;
+	transition: .4s;
+}
+.returnLink:hover{
+	text-decoration: none;
+	transition: .1s;
+	background-color: var(--secbackcolor);
+	color: black;
 }
 #msgIntro{
 	padding-top: 16px;

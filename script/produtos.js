@@ -335,7 +335,7 @@ function criarCarrinho(){
     memory=0
     memoryB=0
 
-    window.document.querySelector(".cartList").innerHTML+=`<a href="#" onclick="cleanCart()">Limpar carrinho</a>`
+    window.document.querySelector(".cartList").innerHTML+=`<a href="#" onclick="cleanCart()" class="returnLink">Limpar carrinho</a>`
     for(c in carrinhoLoja){
         window.document.querySelector(".cartList").innerHTML+=`<div class="cartElement"><img class="cartElementImg" src="${carrinhoLoja[c].img_a}" alt="${carrinhoLoja[c].alt}"><div class="cartElementName">${carrinhoLoja[c].nome}<br><br><strong>R$ ${carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}</strong></div><div class="cartElementInfo"><strong>tamanho: </strong>${carrinhoLoja[c].tamanho[carrinhoLoja[c].size]}<br><strong>cor: </strong>${carrinhoLoja[c].cor[carrinhoLoja[c].color]}</div><div class="cartElementConfig"><div class="cartECplus nselm" onclick="changeCart(${c},2)">+</div><div class="cartQntValue nselm">${carrinhoLoja[c].qnt}</div><div class="cartECless nselm" onclick="changeCart(${c},1)">-</div><img class="cartECjunk nselm" onclick="changeCart(${c},0)" src="images/icons/delete.png" alt="${carrinhoLoja[c].alt}"></div></div>`
         memory+=(carrinhoLoja[c].valorAtual*carrinhoLoja[c].qnt)
@@ -398,9 +398,9 @@ function cleanCart(){
     memory = 0
     memoryB = 0
 
-    carrinhoVazio()
     addCart(0);
+    carrinhoVazio();
 }
 function carrinhoVazio(){
-    window.document.querySelector(".cartList").innerHTML=`<div class="cartListnone">Você ainda não tem nenhum item em seu carrinho</div><img src="images/icons/saderror.png" alt="nonecart">`
+    window.document.querySelector(".cartList").innerHTML=`<div class="cartListnone">Você ainda não tem nenhum item em seu carrinho</div><img src="images/icons/saderror.png" alt="nonecart" style="background-color: #FFCAB8; border-radius: 100px;">`
 }
