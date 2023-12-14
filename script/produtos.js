@@ -169,7 +169,11 @@ function loadProduct(filtroSelecionado){// CARREGA E FILTRA PRODUTOS SE NECESSÁ
             </p>
             </div>
             </div>`
-            window.document.querySelector("#msgIntro").innerHTML="Seja bem vindo!";
+            if(mostruarioIndice==-1){
+                window.document.querySelector("#msgIntro").innerHTML="Seja bem vindo!";
+            }else if(filtro==="none"){
+                window.document.querySelector("#msgIntro").innerHTML="Veja mais";
+            }
         }else if(produtosLoja[c].categoria.indexOf(filtro)!=-1){//caso selecione algum filtro
                 cont++;
                 window.document.querySelector(".shopItens").innerHTML+=`
@@ -222,7 +226,9 @@ function showProduct(showIs){// APRESENTA PRODUTO SELECIONADO NO MOSTRUÁRIO
         //Rola pagina da tela até o topo
         window.scrollTo(0,0);
         //Altera a mensagem para Veja mais
-        window.document.querySelector("#msgIntro").innerHTML="Veja mais";
+        if(filtro==='none'){
+            window.document.querySelector("#msgIntro").innerHTML="Veja mais";
+        }
         //Habilita visualização do mostruário
         window.document.getElementById('showProduct').style="display:grid;";
         //Atualiza PESO, COR, TAMANHO, MATERIAL e INFORMAÇÃO
@@ -399,5 +405,5 @@ function cleanCart(){
     carrinhoVazio();
 }
 function carrinhoVazio(){
-    window.document.querySelector(".cartList").innerHTML=`<div class="cartListnone">Você ainda não tem nenhum item em seu carrinho</div><img src="images/icons/saderror.png" alt="nonecart" style="background-color: #FFCAB8; border-radius: 100px;">`
+    window.document.querySelector(".cartList").innerHTML=`<div class="cartListnone">Você ainda não tem nenhum produto em seu carrinho</div><img src="images/icons/saderror.png" alt="nonecart" style="background-color: #FFCAB8; border-radius: 100px;">`
 }
