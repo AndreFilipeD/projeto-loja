@@ -62,7 +62,7 @@ var produtosLoja = [
     img_c:'produtos/roupas_Teste/conjunto_masculino_exemplo.png',
     info:'Conjunto masculino leve e respirável para a prática de esporte',
     peso:'328g',material:'Poliester',
-    cor:['branco'],
+    cor:['branco','preto','azul','verde','vermelho','amarelo','laranja'],
     tamanho:['PP','P','M','G','GG','XG'],
     valorAntigo:99.90,
     valorAtual:64.90,
@@ -299,15 +299,7 @@ function changePicture(picIs){// MUDA A FOTO AO CLICAR NO MOSTRUÁRIO
             break;
     }
 }
-function debugPage(){
-    window.alert(carrinhoLoja[0].valorAtual)
-    window.alert(carrinhoLoja[1].valorAtual)
-    window.alert(carrinhoLoja[2].valorAtual)
-    window.alert(carrinhoLoja[3].valorAtual)
-    /*for(c in carrinhoLoja){
-        window.alert(carrinhoLoja[c].size)
-    }*/
-}
+
 function addCart(sel){// ADICIONA OU ACRESCENTA, ATUALIZA E ENVIA CARRINHO DE COMPRAS
 if(sizeSelected!=-1){//Se um tamanho já foi selecionado
     clickthrow(2)//abre carrinho
@@ -316,46 +308,18 @@ if(sizeSelected!=-1){//Se um tamanho já foi selecionado
     if(sel===1){//caso esteja adicionando algo ao carrinho
         
         for(c in carrinhoLoja){//verifique em todos os itens do carrinho
-            //carrinhoLoja[c].indice===produtosLoja[mostruarioIndice].indice && 
-            if(carrinhoLoja[c].size===sizeSelected){//antes tinha o indice 
-            window.alert("se sizeSelected = carrinhoLoja["+c+"]")
-            //se o tamanho é o mesmo
+            if(carrinhoLoja[c].indice===produtosLoja[mostruarioIndice].indice &&carrinhoLoja[c].size===sizeSelected&&carrinhoLoja[c].color===colorSelected){
+            //cont avisa se o item foi encontrado no carrinho atual
                 cont++;memory=c;
-             //cont avisa se o item foi encontrado no carrinho atual
             }//memory armazena qual item deve receber aumento de quantidade caso seja igual
         }
         if(cont>0){//Acrescenta o item em +1 caso ele já esteja na loja
-            window.alert("cont > 0"+carrinhoLoja[0].size)
             carrinhoLoja[memory].qnt+=1;
         }else{//caso não encontre o mesmo item, cria um novo
-            //window.alert('Qnt produtos no carrinho: '+carrinhoLoja.length)
-            carrinhoLoja.unshift(produtosLoja[mostruarioIndice]);
-            window.alert("cont not > 0"+carrinhoLoja[0].size)
-            //window.alert(produtosLoja[mostruarioIndice].size)
-            //window.alert('Qnt produtos no carrinho após push: '+carrinhoLoja.length)
             produtosLoja[mostruarioIndice].qnt = 1;
-
-            /*
-            window.alert(produtosLoja[0].valorAtual)
-            window.alert(produtosLoja[1].valorAtual)
-            window.alert(produtosLoja[2].valorAtual)
-            window.alert(produtosLoja[3].valorAtual)
-            window.alert(produtosLoja[4].valorAtual)
-            window.alert(produtosLoja[5].valorAtual)
-            */
-
-            //Possivel problema: Não se pode chamar objetos por indice
-            // Logo não é possivel atribuir o valor de forma individual
-            //Solução: indexar os objetos dentro do carrinho
-
+            carrinhoLoja.unshift(Object.assign({},produtosLoja[mostruarioIndice]));
             carrinhoLoja[0].size = sizeSelected
             carrinhoLoja[0].color = colorSelected// = colorSelected
-            
-            //carrinhoLoja[0].size=999 PROVOU O PROBLEMA
-            
-            for(c in carrinhoLoja){
-                window.alert("Objeto ["+c+"] size:"+carrinhoLoja[c].size+"|| color:"+carrinhoLoja[c].color)
-            }
         }
     }
     criarCarrinho()
@@ -370,6 +334,8 @@ function criarCarrinho(){
     //cria o carrinho junto de seu texto para Whatsapp
     memory=0
     memoryB=0
+
+    window.document.querySelector(".cartList").innerHTML+=`<a href="#" onclick="cleanCart()">Limpar carrinho</a>`
     for(c in carrinhoLoja){
         window.document.querySelector(".cartList").innerHTML+=`<div class="cartElement"><img class="cartElementImg" src="${carrinhoLoja[c].img_a}" alt="${carrinhoLoja[c].alt}"><div class="cartElementName">${carrinhoLoja[c].nome}<br><br><strong>R$ ${carrinhoLoja[c].valorAtual.toFixed(2).replace('.',',')}</strong></div><div class="cartElementInfo"><strong>tamanho: </strong>${carrinhoLoja[c].tamanho[carrinhoLoja[c].size]}<br><strong>cor: </strong>${carrinhoLoja[c].cor[carrinhoLoja[c].color]}</div><div class="cartElementConfig"><div class="cartECplus nselm" onclick="changeCart(${c},2)">+</div><div class="cartQntValue nselm">${carrinhoLoja[c].qnt}</div><div class="cartECless nselm" onclick="changeCart(${c},1)">-</div><img class="cartECjunk nselm" onclick="changeCart(${c},0)" src="images/icons/delete.png" alt="${carrinhoLoja[c].alt}"></div></div>`
         memory+=(carrinhoLoja[c].valorAtual*carrinhoLoja[c].qnt)
@@ -424,6 +390,17 @@ function changeCart(selected, action){// CONTROLA QUANTIDADE POR PRODUTO E NOTIF
             //ele deve remover apenas 1 elemento.
     }
     if(carrinhoLoja.length<1){
-        window.document.querySelector(".cartList").innerHTML=`<div class="cartListnone">Você ainda não tem nenhum item em seu carrinho</div><img src="images/icons/saderror.png" alt="nonecart">`
+        carrinhoVazio()
     }
+}
+function cleanCart(){
+    carrinhoLoja = []
+    memory = 0
+    memoryB = 0
+
+    carrinhoVazio()
+    addCart(0);
+}
+function carrinhoVazio(){
+    window.document.querySelector(".cartList").innerHTML=`<div class="cartListnone">Você ainda não tem nenhum item em seu carrinho</div><img src="images/icons/saderror.png" alt="nonecart">`
 }

@@ -239,6 +239,7 @@ main{ /* MAIN */
 	text-align: center;
 	font-weight: 600;
 	transition: .4s;
+	margin-bottom: 5px;
 }
 .csizeButton:hover{
 	transition: .4s;
