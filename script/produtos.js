@@ -143,7 +143,7 @@ function startIndice(){// ATRIBUI O INDICE DE CADA ITEM AUTOMATICAMENTE
 }startIndice()
 function cleanProduct(){// REMOVE TODOS OS PRODUTOS DO SITE PARA ATUALIZAÇÃO
     window.document.querySelector(".shopItens").innerHTML="";cont=0;
-    showProduct(-1);
+    //showProduct(-1);
 }
 function loadProduct(filtroSelecionado){// CARREGA E FILTRA PRODUTOS SE NECESSÁRIO
     filtro=filtroSelecionado; // LINHA DISPENSAVEL?
