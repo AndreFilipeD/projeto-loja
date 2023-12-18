@@ -332,15 +332,12 @@
         margin: calc(-25px) auto 0 auto;
         max-width: 1450px;
     }
-    #shopContainer{
-        /*margin-top: -30vw;*/ /*OLDER FIX*/
-    }
     .shopProduct{
         margin-top: 49.6px;
         margin-right: 24.8px;
         margin-left: 24.8px;
         width: 200px;
-        height: 280px;
+        /*height: 280px;*/
     }
     .pshowShare{
         text-align: center;
